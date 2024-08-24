@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --blue: #4386f7;
+    --red: #f05052;
+    --green: #3ab274;
+    --white: #ffffff;
+    --black: #191820;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--black);
+}
+
+.container{
+    width: 500px;
+    padding: 25px;
+    border-radius: 10px;
+    border: 2px solid var(--blue);
+}
+
+.container .title{
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    position: relative;
+}
+
+.title::before{
+    content: "";
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--green);
+}
+
+form{
+    margin-top: 50px;
+}
+
+.form-control{
+    width: 100%;
+    height: 70px;
+    margin-top: 35px;
+    position: relative;
+}
+
+.form-control input,
+.form-control label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.form-control input{
+    z-index: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    border: 2px solid var(--blue);
+    transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-control label{
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--blue);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-control:hover input{
+    border-color: var(--red);
+}
+
+.form-control:hover label,
+.form-control input:valid ~ label{
+    background: var(--red);
+    width: auto;
+    height: auto;
+    padding: 2px 40px;
+    border-radius: 25px;
+    text-align: center;
+    top: -50%;
+    transform: translateY(50%);
+    left: 5%;
+}
+
+.form-control input:valid{
+    border-color: var(--green);
+}
+
+.form-control input:valid ~ label{
+    background: var(--green);
+}
+
+
+
+.submitBtn{
+    margin-top: 30px;
+}
+
+.submitBtn button{
+    width: 100%;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    pointer-events: none;
+}
+.mdi--bangladeshi-taka {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M18.09 10.5V9h-8.5V4.5A1.5 1.5 0 0 0 8.09 3a1.5 1.5 0 0 0-1.5 1.5A1.5 1.5 0 0 0 8.09 6v3h-3v1.5h3v6.2c0 2.36 1.91 4.27 4.25 4.3c2.34-.04 4.2-1.96 4.16-4.3c0-1.59-.75-3.09-2-4.08a4 4 0 0 0-.7-.47c-.22-.1-.46-.15-.7-.15c-.71 0-1.36.39-1.71 1c-.19.3-.29.65-.29 1c.01 1.1.9 2 2.01 2c.62 0 1.2-.31 1.58-.8c.21.47.31.98.31 1.5c.04 1.5-1.14 2.75-2.66 2.8c-1.53 0-2.76-1.27-2.75-2.8v-6.2z'/%3E%3C/svg%3E");
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+.total {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+        }
+
+.submitBtn button.active{
+    background: var(--green);
+    pointer-events: auto;
+}

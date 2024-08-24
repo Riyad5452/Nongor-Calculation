@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NONGOR KITCHEN</title>
+  <!--Custom CSS-->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Boxicons CDN -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <p class="title">Cash In Hand Calculation</p>
+
+        <form id="cashForm">
+            <div class="form-control">
+                <input type="text" id="Thousand" placeholder="0">
+                <label for="Thousand">
+                    <span class="mdi--bangladeshi-taka"></span> 1000
+                </label>
+            </div>
+
+            <div class="form-control">
+                <input type="text" id="FiveHundred" placeholder="0">
+                <label for="FiveHundred">
+                    <span class="mdi--bangladeshi-taka"></span> 500
+                </label>
+            </div>
+
+            <div class="form-control">
+                <input type="text" id="TwoHundred" placeholder="0">
+                <label for="TwoHundred">
+                    <span class="mdi--bangladeshi-taka"></span> 200
+                </label>
+            </div>
+
+            <div class="form-control">
+                <input type="text" id="Hundred" placeholder="0">
+                <label for="Hundred">
+                    <span class="mdi--bangladeshi-taka"></span> 100
+                </label>
+            </div>
+
+            <div class="form-control">
+                <input type="text" id="Fifty" placeholder="0">
+                <label for="Fifty">
+                    <span class="mdi--bangladeshi-taka"></span> 50
+                </label>
+            </div>
+
+            <div class="form-control">
+                <input type="text" id="Twenty" placeholder="0">
+                <label for="Twenty">
+                    <span class="mdi--bangladeshi-taka"></span> 20
+                </label>
+            </div>
+
+            <div class="form-control">
+                <input type="text" id="Ten" placeholder="0">
+                <label for="Ten">
+                    <span class="mdi--bangladeshi-taka"></span> 10
+                </label>
+            </div>
+
+            <div class="submitBtn">
+                <button type="submit" onclick="Calc()" class="submit">Submit</button>
+            </div>
+        </form>
+
+        <p class="total"></p>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const formControls = document.querySelectorAll('.form-control')
+const inputs = document.querySelectorAll('input')
+const submitBtn = document.querySelector('.submit')
+
+formControls.forEach(control => {
+    const input = control.querySelector('input')
+
+    control.addEventListener('mouseover', () => {
+        input.focus()
+    })
+})
+
+inputs.forEach(input => {
+    input.addEventListener("input", ()=> {
+        let allValid = true 
+
+        inputs.forEach(input => {
+            if(!input.checkValidity()){
+                allValid = false
+            }
+        })
+
+        if(allValid){
+            submitBtn.classList.add("active")
+        } else{
+            submitBtn.classList.remove("active")
+        }
+    })
+})
+        function Calc(){
+            event.preventDefault(); // Prevent form submission
+
+            // Get values from input fields
+            const thousand = parseInt(document.getElementById('Thousand').value) || 0;
+            const fiveHundred = parseInt(document.getElementById('FiveHundred').value) || 0;
+            const twoHundred = parseInt(document.getElementById('TwoHundred').value) || 0;
+            const hundred = parseInt(document.getElementById('Hundred').value) || 0;
+            const fifty = parseInt(document.getElementById('Fifty').value) || 0;
+            const twenty = parseInt(document.getElementById('Twenty').value) || 0;
+            const ten = parseInt(document.getElementById('Ten').value) || 0;
+
+            // Calculate total cash in hand
+            const total = (thousand * 1000) + (fiveHundred * 500) + (twoHundred * 200) +
+                          (hundred * 100) + (fifty * 50) + (twenty * 20) + (ten * 10);
+
+            // Display the total
+            document.querySelector('.total').innerText = 'Total Cash in Hand: ' + total + ' BDT';
+        };
+    </script>
+</body>
+</html>
